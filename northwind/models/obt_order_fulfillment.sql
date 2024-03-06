@@ -1,23 +1,23 @@
-With f_order_fulfillment as (
-    select * from{{ ref('fact_order_fulfillment') }}
+WITH f_order_fulfillment AS (
+    SELECT * FROM {{ ref('fact_order_fulfillment') }}
 ),
-d_customer as (
-    select * from {{ ref('dim_customer') }}
+d_customer AS (
+    SELECT * FROM {{ ref('dim_customer') }}
 ),
-d_employee as (
-    select * from {{ ref('dim_employee') }}
+d_employee AS (
+    SELECT * FROM {{ ref('dim_employee') }}
 ),
-d_date as (
-    select * from {{ ref('dim_date') }}
+d_date AS (
+    SELECT * FROM {{ ref('dim_date') }}
 )
-select
+SELECT
     d_customer.*, 
     d_employee.*, 
     d_date.*,
     f.orderid, f.orderdatekey, f.shippeddatekey, f.requireddatekey, f.shipname, f.shipaddress, f.shipcity, f.shipregion, f.shippostalcode, f.shipcountry,
     f.freight, f.shipvia, f.shippercompanyname, f.quantityonorder, f.totalorderamount, f.daysfromordertoshipped, f.daysfromordertorequired, f.shippedtorequireddelta, f.shippedontime
-    from f_order_fulfillment as f
-    left join d_customer on f.customerkey = d_customer.customerkey
-    left join d_employee on f.employeekey=d_employee.employeekey
-    left join d_date on f.orderdatekey=d_date.datekey
+FROM f_order_fulfillment f
+LEFT JOIN d_customer ON f.customerkey = d_customer.customerkey
+LEFT JOIN d_employee ON f.employeekey = d_employee.employeekey
+LEFT JOIN d_date ON f.orderdatekey = d_date.datekey
 
