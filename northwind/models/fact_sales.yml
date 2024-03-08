@@ -21,4 +21,4 @@ models:
       - name: discountamount
         description: additive fact for discount amount of product on order quantity * unit price * discount
       - name: soldamount
-        description: additive fact for sold amount of product on (order quantity * unit price * (1-discount))
+        description: additive fact for sold amount of product on (order quantity * unit price * (1-discount))

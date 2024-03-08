@@ -13,4 +13,5 @@ models:
         description: The business / source key of the product
         tests:
           - not_null
-          - unique
+          - unique
+              

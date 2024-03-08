@@ -22,4 +22,4 @@ select
   o.employeekey, o.customerkey, o.orderdatekey,od.productkey,o.orderkey,od.Quantity,od.extendedpriceamount,od.discountamount,od.soldamount
 
 from stg_orders o
-    join stg_order_details od on o.orderkey = od.orderid
+    join stg_order_details od on o.orderkey = od.orderid
